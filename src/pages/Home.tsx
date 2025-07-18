@@ -84,7 +84,7 @@ const Home = () => {
                 </Button>
               </Link>
               <Link to="/how-it-works">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-refuel-burgundy px-8 py-4 text-lg">
+                <Button size="lg" className="bg-white hover:bg-gray-100 text-refuel-burgundy px-8 py-4 text-lg font-semibold">
                   How It Works
                 </Button>
               </Link>
