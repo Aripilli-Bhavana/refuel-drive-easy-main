@@ -63,7 +63,7 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Refuel brand colors matching the logo
+				
 				refuel: {
 					burgundy: '#8B1538',
 					'burgundy-light': '#A8324A',
