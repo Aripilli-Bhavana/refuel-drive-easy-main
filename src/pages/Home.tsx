@@ -66,7 +66,7 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-refuel-burgundy via-refuel-burgundy to-refuel-burgundy-light min-h-[80vh] flex items-center justify-center text-white">
+      <section className="bg-gradient-to-br from-refuel-burgundy via-refuel-burgundy to-refuel-burgundy-light min-h-screen w-full flex items-center justify-center text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="animate-fade-in">
             <Fuel className="h-20 w-20 mx-auto mb-6 text-gray-200" />
