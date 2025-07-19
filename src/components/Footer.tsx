@@ -139,15 +139,17 @@ const Footer = () => {
         <div className="border-t border-white/20 mt-8 pt-8 text-center animate-fade-in">
           <p className="text-sm text-gray-200 mb-2">Recognized by:</p>
           <div className="flex flex-wrap justify-center gap-4 text-sm text-white">
-            <span className="hover-scale transition-all duration-300">Finalist LevUP Ideathon</span>
+            <span className="hover-scale transition-all duration-300">Finalist - LevUP Ideathon by Levyug</span>
             <span>•</span>
-            <span className="hover-scale transition-all duration-300">Featured at IWN AP</span>
+            <span className="hover-scale transition-all duration-300">Guest Speaker - Meetup with Unstoppable Women, IWN AP</span>
             <span>•</span>
-            <span className="hover-scale transition-all duration-300">State Top 40 for AWE</span>
+            <span className="hover-scale transition-all duration-300">State Top 40, Academy for Women Entrepreneurs, Andhra Pradesh Cohort</span>
             <span>•</span>
-            <span className="hover-scale transition-all duration-300">Meetup with Unstoppable Women</span>
+            <span className="hover-scale transition-all duration-300">Guest Speaker - TIE Vizag, Andhra University</span>
+            <span>•</span>
+            <span className="hover-scale transition-all duration-300">Naaripreneur at IIM - Visakhapatnam</span>
           </div>
-          <p className="text-sm text-gray-200 mt-4">We are expanding soon to Tier 2 cities.</p>
+          <p className="text-sm text-gray-200 mt-4">We are expanding soon to all Tier 2 cities.</p>
         </div>
       </div>
     </footer>
