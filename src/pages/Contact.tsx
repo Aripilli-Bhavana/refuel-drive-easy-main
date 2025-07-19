@@ -53,7 +53,7 @@ const Contact = () => {
     {
       icon: <Phone className="h-6 w-6 text-refuel-orange" />,
       title: "Phone",
-      details: ["+91 98765 43210", "+91 87654 32109"],
+      details: ["1800 000 000", "1800 000 000"],
       availability: "24/7 Emergency Support"
     },
     {
@@ -65,7 +65,7 @@ const Contact = () => {
     {
       icon: <MapPin className="h-6 w-6 text-refuel-orange" />,
       title: "Address",
-      details: ["123 Tech Park, Sector 5", "Hyderabad, Telangana 500032"],
+      details: ["Visakhapatnam, Andhra Pradesh, India"],
       availability: "Mon-Sat: 9 AM - 6 PM"
     },
     {
@@ -192,7 +192,7 @@ const Contact = () => {
                   to help with urgent fuel delivery requests.
                 </p>
                 <div className="space-y-2">
-                  <Button variant="secondary" className="w-full bg-white text-refuel-blue hover:bg-gray-100">
+                  <Button variant="secondary" className="w-full bg-white text-refuel-blue #f3f4f6 hover:bg-burgandy-100">
                     <Phone className="h-4 w-4 mr-2" />
                     Call Emergency Line
                   </Button>
@@ -214,9 +214,9 @@ const Contact = () => {
                   <div>
                     <h4 className="font-semibold text-refuel-orange">Currently Serving:</h4>
                     <ul className="text-gray-600 mt-2 space-y-1">
-                      <li>• Hyderabad Metro Area</li>
-                      <li>• Secunderabad & Suburbs</li>
-                      <li>• Cyberabad (Gachibowli, Madhapur)</li>
+                      <li>Visakhapatnam, Andhra Pradesh</li>
+                      <li>Expanding to all Tier 2 Colleges</li>
+                      
                     </ul>
                   </div>
                   <div>
