@@ -1,154 +1,179 @@
 
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Fuel, Users, Award, Target, Heart, Zap, Shield, Clock } from 'lucide-react';
 
 const About = () => {
-  const achievements = [
-    "Finalist at LevUP Ideathon 2024",
-    "Naaripreneur @ IIM Visakhapatnam",
-    "AWE Cohort Participant",
-    "Student Innovation Award Winner"
+  const values = [
+    {
+      icon: <Fuel className="h-8 w-8 text-refuel-orange" />,
+      title: "Quality First",
+      description: "We partner with certified fuel providers such as Indian Oil, HP, and Bharat Petroleum to ensure premium fuel quality. Our delivery partners carry sealed containers, and each order includes a quality certificate. We also provide a real-time density meter check at your doorstep. Not satisfied? We offer a 100% replacement guarantee."
+    },
+    {
+      icon: <Clock className="h-8 w-8 text-refuel-blue" />,
+      title: "Reliability",
+      description: "24/7 service availability with guaranteed delivery times. Your time is precious, and we respect that."
+    },
+    {
+      icon: <Shield className="h-8 w-8 text-refuel-burgundy" />,
+      title: "Safety",
+      description: "All safety protocols followed with trained professionals and proper equipment for secure fuel handling."
+    },
+    {
+      icon: <Heart className="h-8 w-8 text-red-500" />,
+      title: "Customer Care",
+      description: "Your satisfaction is our priority. We're here to help whenever you need us in Visakhapatnam."
+    }
   ];
 
-  const team = [
-    {
-      name: "Student Founders",
-      role: "Passionate about solving real-world problems",
-      description: "A team of dedicated students who identified the gap in traditional fuel delivery"
-    }
+  const achievements = [
+    "Finalist LevUP Ideathon",
+    "Featured at IWN AP",
+    "State Top 40 for AWE",
+    "Meetup with Unstoppable Women"
+  ];
+
+  const stats = [
+    { number: "500+", label: "Happy Customers", icon: <Users className="h-6 w-6" /> },
+    { number: "2000+", label: "Deliveries Completed", icon: <Fuel className="h-6 w-6" /> },
+    { number: "15min", label: "Average Delivery Time", icon: <Clock className="h-6 w-6" /> },
+    { number: "24/7", label: "Service Availability", icon: <Zap className="h-6 w-6" /> }
   ];
 
   return (
     <div className="min-h-screen py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in">
           <h1 className="text-5xl font-bold text-gray-900 mb-6">About Refuel</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            From a student idea to a revolutionary fuel delivery service
+            Revolutionizing fuel delivery in Visakhapatnam with on-demand, premium quality fuel service.
           </p>
         </div>
 
-        {/* Vision & Mission */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
-          <Card className="hover:shadow-lg transition-shadow duration-300">
-            <CardHeader>
-              <CardTitle className="text-2xl text-refuel-blue">Our Vision</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600 leading-relaxed">
-                To revolutionize the fuel industry by making fuel delivery as convenient as ordering food online. 
-                We envision a world where running out of fuel is never a worry, and where quality fuel is always 
-                just a tap away.
+        {/* Mission Section */}
+        <section className="mb-20">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="animate-slide-in-left">
+              <h2 className="text-3xl font-bold mb-6">Our Mission</h2>
+              <p className="text-lg text-gray-600 mb-6">
+                To revolutionize the way people access fuel by providing convenient, reliable, 
+                and quality-assured on-demand fuel delivery services. We believe that running out 
+                of fuel should never be a problem that disrupts your day.
               </p>
-            </CardContent>
-          </Card>
-
-          <Card className="hover:shadow-lg transition-shadow duration-300">
-            <CardHeader>
-              <CardTitle className="text-2xl text-refuel-orange">Our Mission</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600 leading-relaxed">
-                To provide reliable, convenient, and quality fuel delivery services to individual vehicle owners 
-                and urban commuters, eliminating the hassle of traditional gas stations while ensuring safety 
-                and environmental responsibility.
+              <p className="text-lg text-gray-600 mb-6">
+                Based in Visakhapatnam, we're a student-led startup with big dreams and bigger 
+                determination to make fuel delivery as easy as ordering food.
               </p>
-            </CardContent>
-          </Card>
-        </div>
+              <div className="flex flex-wrap gap-2">
+                <Badge className="bg-refuel-orange text-white">Student-Led</Badge>
+                <Badge className="bg-refuel-blue text-white">Innovation Focused</Badge>
+                <Badge className="bg-refuel-burgundy text-white">Customer First</Badge>
+              </div>
+            </div>
+            <div className="animate-slide-in-right">
+              <img 
+                src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&w=600" 
+                alt="Fuel delivery service"
+                className="rounded-lg shadow-lg hover-lift transition-all duration-300"
+              />
+            </div>
+          </div>
+        </section>
 
-        {/* Journey Story */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-12">Our Journey</h2>
+        {/* Values Section */}
+        <section className="mb-20">
+          <h2 className="text-3xl font-bold text-center mb-12 animate-fade-in">Our Values</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {values.map((value, index) => (
+              <Card key={index} className="card-hover animate-scale-in" style={{animationDelay: `${index * 0.1}s`}}>
+                <CardContent className="p-8">
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0">{value.icon}</div>
+                    <div>
+                      <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
+                      <p className="text-gray-600">{value.description}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* Stats Section */}
+        <section className="mb-20 bg-gray-50 rounded-lg p-12 animate-fade-in">
+          <h2 className="text-3xl font-bold text-center mb-12">Our Impact</h2>
+          <div className="grid md:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <div key={index} className="text-center animate-bounce-in" style={{animationDelay: `${index * 0.1}s`}}>
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-refuel-orange rounded-full mb-4 text-white hover-scale">
+                  {stat.icon}
+                </div>
+                <div className="text-3xl font-bold text-refuel-burgundy mb-2">{stat.number}</div>
+                <div className="text-gray-600">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Achievements Section */}
+        <section className="mb-20">
+          <h2 className="text-3xl font-bold text-center mb-12 animate-fade-in">Recognition & Achievements</h2>
           <div className="max-w-4xl mx-auto">
-            <Card className="p-8">
-              <CardContent className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-refuel-orange rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold">1</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">The Problem</h3>
-                    <p className="text-gray-600">
-                      As students, we constantly faced the frustration of running out of fuel at inconvenient times - 
-                      late nights, during exams, or when stations were overcrowded. We realized this was a universal problem.
-                    </p>
-                  </div>
+            <Card className="animate-scale-in">
+              <CardContent className="p-8">
+                <div className="flex items-center justify-center mb-6">
+                  <Award className="h-12 w-12 text-refuel-orange" />
                 </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-refuel-blue rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold">2</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">The Idea</h3>
-                    <p className="text-gray-600">
-                      Drawing inspiration from food delivery apps, we conceptualized on-demand fuel delivery. 
-                      Why should fuel be any different from other essentials that can be delivered?
-                    </p>
-                  </div>
+                <div className="grid md:grid-cols-2 gap-6">
+                  {achievements.map((achievement, index) => (
+                    <div key={index} className="flex items-center space-x-3 animate-slide-in-right" style={{animationDelay: `${index * 0.1}s`}}>
+                      <div className="w-3 h-3 bg-refuel-orange rounded-full flex-shrink-0"></div>
+                      <span className="text-lg font-medium text-gray-800">{achievement}</span>
+                    </div>
+                  ))}
                 </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-refuel-orange rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold">3</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">The Validation</h3>
-                    <p className="text-gray-600">
-                      Through extensive research and surveys, we discovered that 78% of urban commuters have 
-                      experienced fuel-related inconveniences, validating our solution.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-refuel-blue rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold">4</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">The Launch</h3>
-                    <p className="text-gray-600">
-                      With support from various incubators and competitions, we're now ready to launch Refuel 
-                      and transform how people think about fuel delivery.
-                    </p>
-                  </div>
+                <div className="mt-8 text-center">
+                  <p className="text-lg text-refuel-burgundy font-semibold">
+                    We are expanding soon to Tier 2 cities.
+                  </p>
+                  <p className="text-gray-600 mt-2">
+                    Our delivery partners carry a fuel density meter for live fuel quality testing at your doorstep.
+                  </p>
                 </div>
               </CardContent>
             </Card>
           </div>
         </section>
 
-        {/* Achievements */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-12">Our Achievements</h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            {achievements.map((achievement, index) => (
-              <Badge key={index} variant="secondary" className="text-lg py-2 px-4 bg-refuel-orange/10 text-refuel-orange hover:bg-refuel-orange/20">
-                {achievement}
-              </Badge>
-            ))}
+        {/* Quality Assurance */}
+        <section className="mb-20">
+          <div className="bg-gradient-to-r from-refuel-burgundy to-refuel-burgundy-light text-white rounded-lg p-12 animate-fade-in">
+            <div className="text-center">
+              <h2 className="text-3xl font-bold mb-6">Fuel Quality Assurance</h2>
+              <p className="text-xl max-w-4xl mx-auto leading-relaxed">
+                We partner with certified fuel providers such as Indian Oil, HP, and Bharat Petroleum to ensure premium fuel quality. 
+                Our delivery partners carry sealed containers, and each order includes a quality certificate. We also provide a 
+                real-time density meter check at your doorstep. Not satisfied? We offer a 100% replacement guarantee.
+              </p>
+            </div>
           </div>
         </section>
 
-        {/* Team */}
+        {/* Future Vision */}
         <section>
-          <h2 className="text-3xl font-bold text-center mb-12">Meet the Team</h2>
-          <div className="max-w-2xl mx-auto">
-            {team.map((member, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300">
-                <CardContent className="p-8">
-                  <div className="w-24 h-24 bg-gradient-to-r from-refuel-blue to-refuel-orange rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-2xl font-bold text-white">RF</span>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
-                  <p className="text-refuel-orange font-medium mb-3">{member.role}</p>
-                  <p className="text-gray-600">{member.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="text-center animate-fade-in">
+            <h2 className="text-3xl font-bold mb-6">Our Vision</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+              To become the leading on-demand fuel delivery service across all Tier 2 cities in India, 
+              making fuel shortages a thing of the past and empowering people to focus on what matters most.
+            </p>
+            <div className="flex items-center justify-center">
+              <Target className="h-12 w-12 text-refuel-orange animate-pulse-glow" />
+            </div>
           </div>
         </section>
       </div>

@@ -69,22 +69,22 @@ const Home = () => {
       <section className="bg-gradient-to-br from-refuel-burgundy via-refuel-burgundy to-refuel-burgundy-light min-h-[80vh] flex items-center justify-center text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="animate-fade-in">
-            <Fuel className="h-20 w-20 mx-auto mb-6 text-gray-200 animate-float" />
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+            <Fuel className="h-20 w-20 mx-auto mb-6 text-gray-200" />
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-scale-in">
               <span className="block">REFUEL</span>
               <span className="text-gray-200">On-Demand</span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto animate-fade-in">
               Drive on, we've got your back! Get premium fuel delivered to your location in minutes.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-in-right">
               <Link to="/order">
-                <Button size="lg" className="bg-white hover:bg-gray-100 text-refuel-burgundy px-8 py-4 text-lg font-semibold">
+                <Button size="lg" className="bg-white hover:bg-gray-100 text-refuel-burgundy px-8 py-4 text-lg font-semibold hover-scale">
                   Order Fuel Now
                 </Button>
               </Link>
               <Link to="/how-it-works">
-                <Button size="lg" className="bg-white hover:bg-gray-100 text-refuel-burgundy px-8 py-4 text-lg font-semibold">
+                <Button size="lg" className="bg-transparent border-2 border-white hover:bg-white hover:text-refuel-burgundy text-white px-8 py-4 text-lg font-semibold transition-all duration-300 hover-scale">
                   How It Works
                 </Button>
               </Link>
@@ -96,7 +96,7 @@ const Home = () => {
       {/* Customer Flow Process */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Your Fuel Emergency? We've Got You Covered!</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Follow these simple steps when you need fuel delivered to your location
@@ -108,8 +108,8 @@ const Home = () => {
             <div className="process-flow relative">
               <div className="grid grid-cols-6 gap-4 relative z-10">
                 {flowSteps.map((step, index) => (
-                  <div key={index} className="flex flex-col items-center">
-                    <div className={`${step.bgColor} p-6 rounded-full mb-4 flow-step relative`}>
+                  <div key={index} className="flex flex-col items-center animate-scale-in" style={{animationDelay: `${index * 0.1}s`}}>
+                    <div className={`${step.bgColor} p-6 rounded-full mb-4 flow-step relative transition-all duration-300 hover:shadow-lg hover:scale-105`}>
                       <div className="absolute -top-2 -right-2 w-6 h-6 bg-refuel-burgundy text-white rounded-full flex items-center justify-center text-sm font-bold">
                         {index + 1}
                       </div>
@@ -129,8 +129,8 @@ const Home = () => {
           {/* Mobile Flow */}
           <div className="md:hidden space-y-6">
             {flowSteps.map((step, index) => (
-              <div key={index} className="flex items-center space-x-4">
-                <div className={`${step.bgColor} p-4 rounded-full flow-step relative flex-shrink-0`}>
+              <div key={index} className="flex items-center space-x-4 animate-slide-in-right" style={{animationDelay: `${index * 0.1}s`}}>
+                <div className={`${step.bgColor} p-4 rounded-full flow-step relative flex-shrink-0 transition-all duration-300 hover:shadow-lg hover:scale-105`}>
                   <div className="absolute -top-2 -left-2 w-6 h-6 bg-refuel-burgundy text-white rounded-full flex items-center justify-center text-sm font-bold">
                     {index + 1}
                   </div>
@@ -149,16 +149,16 @@ const Home = () => {
       {/* Toll-Free Number Section */}
       <section className="py-16 bg-refuel-burgundy text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
+          <div className="text-center animate-fade-in">
             <Phone className="h-16 w-16 mx-auto mb-6 text-gray-200" />
             <h2 className="text-3xl font-bold mb-4">No Signal? No Problem!</h2>
             <p className="text-xl mb-6 max-w-2xl mx-auto">
               In areas with poor network coverage, simply call our toll-free number to place your fuel order
             </p>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 max-w-md mx-auto">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 max-w-md mx-auto hover-scale transition-all duration-300">
               <p className="text-lg mb-2">Call us anytime, anywhere:</p>
-              <a href="tel:1800-REFUEL-1" className="text-3xl font-bold text-gray-200 hover:text-white transition-colors">
-                1800-REFUEL-1
+              <a href="tel:0000-REFUEL-1" className="text-3xl font-bold text-gray-200 hover:text-white transition-colors">
+                0000-REFUEL-1
               </a>
               <p className="text-sm mt-2 opacity-90">(Available 24/7)</p>
             </div>
@@ -169,7 +169,7 @@ const Home = () => {
       {/* What Refuel Does */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">What We Do</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Refuel is an innovative on-demand fuel delivery service that brings premium quality fuel 
@@ -178,33 +178,33 @@ const Home = () => {
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="text-center hover:shadow-lg transition-shadow duration-300">
+            <Card className="text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-2 animate-scale-in">
               <CardContent className="p-8">
                 <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Clock className="h-8 w-8 text-refuel-burgundy" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">24/7 Delivery</h3>
-                <p className="text-gray-600">Get fuel delivered anytime, anywhere in the city</p>
+                <p className="text-gray-600">Get fuel delivered anytime, anywhere in Visakhapatnam</p>
               </CardContent>
             </Card>
 
-            <Card className="text-center hover:shadow-lg transition-shadow duration-300">
+            <Card className="text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-2 animate-scale-in" style={{animationDelay: '0.1s'}}>
               <CardContent className="p-8">
                 <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <MapPin className="h-8 w-8 text-gray-700" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Track Your Order</h3>
-                <p className="text-gray-600">Real-time tracking of your fuel delivery</p>
+                <p className="text-gray-600">Real-time tracking of your fuel delivery with live updates</p>
               </CardContent>
             </Card>
 
-            <Card className="text-center hover:shadow-lg transition-shadow duration-300">
+            <Card className="text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-2 animate-scale-in" style={{animationDelay: '0.2s'}}>
               <CardContent className="p-8">
                 <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <CheckCircle className="h-8 w-8 text-refuel-burgundy" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Quality Assured</h3>
-                <p className="text-gray-600">Premium quality fuel in sealed, certified containers</p>
+                <p className="text-gray-600">Premium quality fuel with real-time density meter verification</p>
               </CardContent>
             </Card>
           </div>
@@ -214,7 +214,7 @@ const Home = () => {
       {/* Situations Slideshow */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">When You Need Us Most</h2>
             <p className="text-xl text-gray-600">
               Life happens. We're here when traditional fuel stations aren't an option.
@@ -223,11 +223,11 @@ const Home = () => {
           
           <div className="grid md:grid-cols-3 gap-8">
             {situations.map((situation, index) => (
-              <div key={index} className="relative overflow-hidden rounded-lg shadow-lg group">
+              <div key={index} className="relative overflow-hidden rounded-lg shadow-lg group animate-scale-in" style={{animationDelay: `${index * 0.1}s`}}>
                 <img 
                   src={situation.image} 
                   alt={situation.title}
-                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-refuel-burgundy/70 to-transparent flex items-end">
                   <div className="p-6 text-white">
@@ -241,15 +241,15 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section - Extended maroon background */}
       <section className="py-20 bg-gradient-to-r from-refuel-burgundy to-refuel-burgundy-light text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in">
           <h2 className="text-4xl font-bold mb-6">Ready to Never Run Out of Fuel Again?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Join thousands of satisfied customers who have made the smart switch to on-demand fuel delivery.
           </p>
           <Link to="/order">
-            <Button size="lg" className="bg-white hover:bg-gray-100 text-refuel-burgundy px-8 py-4 text-lg font-semibold">
+            <Button size="lg" className="bg-white hover:bg-gray-100 text-refuel-burgundy px-8 py-4 text-lg font-semibold hover-scale transition-all duration-300">
               Get Started Today
             </Button>
           </Link>

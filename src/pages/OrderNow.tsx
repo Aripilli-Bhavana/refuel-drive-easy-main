@@ -8,10 +8,20 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
-import { Fuel, Map, ArrowDown } from 'lucide-react';
+import { Fuel, Map, ArrowDown, User, LogIn } from 'lucide-react';
 
 const OrderNow = () => {
   const { toast } = useToast();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showAuth, setShowAuth] = useState(false);
+  const [authMode, setAuthMode] = useState<'signin' | 'signup'>('signin');
+  const [authData, setAuthData] = useState({
+    email: '',
+    password: '',
+    name: '',
+    phone: ''
+  });
+  
   const [formData, setFormData] = useState({
     fuelType: '',
     quantity: '',
@@ -27,8 +37,77 @@ const OrderNow = () => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
+  const handleAuthInputChange = (field: string, value: string) => {
+    setAuthData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleAuth = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Simulate authentication
+    if (authMode === 'signin') {
+      // Admin credentials check
+      if (authData.email === 'admin@refuel.com' && authData.password === 'admin123') {
+        setIsLoggedIn(true);
+        setShowAuth(false);
+        toast({
+          title: "Welcome Admin!",
+          description: "You have successfully signed in.",
+        });
+      } else {
+        toast({
+          title: "Sign In Successful",
+          description: "Welcome back! You can now place your order.",
+        });
+        setIsLoggedIn(true);
+        setShowAuth(false);
+      }
+    } else {
+      toast({
+        title: "Account Created!",
+        description: "Your account has been created successfully. You can now place orders.",
+      });
+      setIsLoggedIn(true);
+      setShowAuth(false);
+    }
+  };
+
+  const detectLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          // Simulate reverse geocoding
+          const mockAddress = `Location: ${latitude.toFixed(4)}, ${longitude.toFixed(4)}, Visakhapatnam, Andhra Pradesh`;
+          setFormData(prev => ({ ...prev, address: mockAddress }));
+          toast({
+            title: "Location Detected",
+            description: "Your current location has been added to the address field.",
+          });
+        },
+        (error) => {
+          toast({
+            title: "Location Error",
+            description: "Unable to detect location. Please enter manually.",
+            variant: "destructive",
+          });
+        }
+      );
+    } else {
+      toast({
+        title: "Not Supported",
+        description: "Geolocation is not supported by this browser.",
+        variant: "destructive",
+      });
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!isLoggedIn) {
+      setShowAuth(true);
+      return;
+    }
     
     // Basic validation
     if (!formData.fuelType || !formData.quantity || !formData.address || !formData.phoneNumber) {
@@ -66,10 +145,11 @@ const OrderNow = () => {
   ];
 
   const quantities = [
-    { value: '1', label: '1 Liter', deliveryFee: '₹150' },
-    { value: '2', label: '2 Liters', deliveryFee: '₹130' },
-    { value: '3', label: '3 Liters', deliveryFee: '₹120' },
-    { value: '5', label: '5 Liters', deliveryFee: '₹100' }
+    { value: '1', label: '1 Liter', deliveryFee: '₹60' },
+    { value: '2', label: '2 Liters', deliveryFee: '₹60' },
+    { value: '3', label: '3 Liters', deliveryFee: '₹60' },
+    { value: '4', label: '4 Liters', deliveryFee: '₹60' },
+    { value: '5', label: '5 Liters', deliveryFee: '₹60' }
   ];
 
   const serviceTypes = [
@@ -101,25 +181,129 @@ const OrderNow = () => {
 
   const pricing = calculateTotal();
 
+  if (showAuth) {
+    return (
+      <div className="min-h-screen py-20 bg-gray-50 flex items-center justify-center">
+        <Card className="w-full max-w-md animate-scale-in">
+          <CardHeader>
+            <CardTitle className="flex items-center">
+              <User className="h-6 w-6 text-refuel-orange mr-2" />
+              {authMode === 'signin' ? 'Sign In' : 'Sign Up'}
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleAuth} className="space-y-4">
+              {authMode === 'signup' && (
+                <div>
+                  <Label htmlFor="name">Full Name *</Label>
+                  <Input
+                    id="name"
+                    value={authData.name}
+                    onChange={(e) => handleAuthInputChange('name', e.target.value)}
+                    required
+                  />
+                </div>
+              )}
+              
+              <div>
+                <Label htmlFor="email">Email *</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  value={authData.email}
+                  onChange={(e) => handleAuthInputChange('email', e.target.value)}
+                  required
+                />
+              </div>
+              
+              <div>
+                <Label htmlFor="password">Password *</Label>
+                <Input
+                  id="password"
+                  type="password"
+                  value={authData.password}
+                  onChange={(e) => handleAuthInputChange('password', e.target.value)}
+                  required
+                />
+              </div>
+              
+              {authMode === 'signup' && (
+                <div>
+                  <Label htmlFor="phone">Phone Number *</Label>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    value={authData.phone}
+                    onChange={(e) => handleAuthInputChange('phone', e.target.value)}
+                    required
+                  />
+                </div>
+              )}
+              
+              <Button type="submit" className="w-full bg-refuel-orange hover:bg-refuel-orange/90">
+                {authMode === 'signin' ? 'Sign In' : 'Sign Up'}
+              </Button>
+              
+              <div className="text-center">
+                <button
+                  type="button"
+                  onClick={() => setAuthMode(authMode === 'signin' ? 'signup' : 'signin')}
+                  className="text-refuel-orange hover:underline"
+                >
+                  {authMode === 'signin' ? "Don't have an account? Sign Up" : "Already have an account? Sign In"}
+                </button>
+              </div>
+              
+              <div className="text-center">
+                <button
+                  type="button"
+                  onClick={() => setShowAuth(false)}
+                  className="text-gray-500 hover:underline text-sm"
+                >
+                  Back to Order
+                </button>
+              </div>
+              
+              {authMode === 'signin' && (
+                <div className="text-xs text-gray-500 text-center">
+                  Admin credentials: admin@refuel.com / admin123
+                </div>
+              )}
+            </form>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen py-20 bg-gray-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 animate-fade-in">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Order Fuel Delivery</h1>
           <p className="text-xl text-gray-600">
-            Get premium fuel delivered to your location in minutes
+            Get premium fuel delivered to your location in Visakhapatnam
           </p>
+          {!isLoggedIn && (
+            <div className="mt-4">
+              <Button onClick={() => setShowAuth(true)} className="bg-refuel-orange hover:bg-refuel-orange/90">
+                <LogIn className="h-4 w-4 mr-2" />
+                Sign In to Order
+              </Button>
+            </div>
+          )}
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Order Form */}
           <div className="lg:col-span-2">
-            <Card>
+            <Card className="animate-slide-in-right">
               <CardHeader>
                 <CardTitle className="flex items-center">
                   <Fuel className="h-6 w-6 text-refuel-orange mr-2" />
                   Order Details
+                  {isLoggedIn && <Badge className="ml-2 bg-green-100 text-green-800">Signed In</Badge>}
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -149,7 +333,7 @@ const OrderNow = () => {
                     <Label htmlFor="quantity">Quantity *</Label>
                     <Select value={formData.quantity} onValueChange={(value) => handleInputChange('quantity', value)}>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select quantity" />
+                        <SelectValue placeholder="Select quantity (1L-5L available)" />
                       </SelectTrigger>
                       <SelectContent>
                         {quantities.map((qty) => (
@@ -206,9 +390,19 @@ const OrderNow = () => {
                   {/* Delivery Address */}
                   <div>
                     <Label htmlFor="address">Delivery Address *</Label>
+                    <div className="flex gap-2 mb-2">
+                      <Button
+                        type="button"
+                        onClick={detectLocation}
+                        className="bg-refuel-blue hover:bg-refuel-blue/90 text-white"
+                        size="sm"
+                      >
+                        Detect Location
+                      </Button>
+                    </div>
                     <Textarea
                       id="address"
-                      placeholder="Enter your complete address with area, city, and pincode"
+                      placeholder="Enter your complete address in Visakhapatnam with area and pincode"
                       value={formData.address}
                       onChange={(e) => handleInputChange('address', e.target.value)}
                       className="min-h-[80px]"
@@ -220,7 +414,7 @@ const OrderNow = () => {
                     <Label htmlFor="landmark">Nearby Landmark</Label>
                     <Input
                       id="landmark"
-                      placeholder="e.g., Near City Mall, Opposite Metro Station"
+                      placeholder="e.g., Near Beach Road, Opposite RTC Complex"
                       value={formData.landmark}
                       onChange={(e) => handleInputChange('landmark', e.target.value)}
                     />
@@ -249,13 +443,10 @@ const OrderNow = () => {
                     />
                   </div>
 
-                  {/* Submit Buttons */}
-                  <div className="flex flex-col sm:flex-row gap-4 pt-6">
-                    <Button type="submit" className="flex-1 bg-refuel-orange hover:bg-refuel-orange/90">
-                      Place Order
-                    </Button>
-                    <Button type="button" variant="outline" className="flex-1" onClick={() => window.location.reload()}>
-                      Clear Form
+                  {/* Submit Button */}
+                  <div className="pt-6">
+                    <Button type="submit" className="w-full bg-refuel-orange hover:bg-refuel-orange/90 hover-scale transition-all duration-300">
+                      {isLoggedIn ? 'Place Order' : 'Sign In to Place Order'}
                     </Button>
                   </div>
                 </form>
@@ -265,7 +456,7 @@ const OrderNow = () => {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <Card className="sticky top-24">
+            <Card className="sticky top-24 animate-scale-in">
               <CardHeader>
                 <CardTitle className="flex items-center">
                   <Map className="h-6 w-6 text-refuel-blue mr-2" />
@@ -316,21 +507,21 @@ const OrderNow = () => {
                 <div className="mt-6 pt-6 border-t">
                   <h4 className="font-semibold mb-3">What's Included:</h4>
                   <ul className="space-y-2 text-sm text-gray-600">
-                    <li className="flex items-center">
+                    <li className="flex items-center hover-scale transition-all duration-300">
                       <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-                      Quality certified fuel
+                      Quality certified fuel with certificate
                     </li>
-                    <li className="flex items-center">
+                    <li className="flex items-center hover-scale transition-all duration-300">
                       <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
                       Real-time GPS tracking
                     </li>
-                    <li className="flex items-center">
+                    <li className="flex items-center hover-scale transition-all duration-300">
                       <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-                      Professional delivery
+                      Professional delivery in Visakhapatnam
                     </li>
-                    <li className="flex items-center">
+                    <li className="flex items-center hover-scale transition-all duration-300">
                       <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-                      Insurance coverage
+                      Density meter quality verification
                     </li>
                   </ul>
                 </div>
