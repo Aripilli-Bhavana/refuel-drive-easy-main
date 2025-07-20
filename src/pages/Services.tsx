@@ -12,8 +12,8 @@ const Services = () => {
       icon: <Fuel className="h-12 w-12 text-refuel-orange" />,
       title: "Emergency Fuel Delivery",
       description: "Stuck with an empty tank? Get emergency fuel delivered within 15-30 minutes",
-      features: ["Available 24/7", "Priority delivery", "Real-time tracking", "Minimum 2L delivery"],
-      price: "Starting at ₹150 + fuel cost",
+      features: ["Available 24/7", "Priority delivery", "Real-time tracking", "Quick emergency service"],
+      price: "Fuel cost + delivery charges",
       popular: true
     },
     {
@@ -21,7 +21,7 @@ const Services = () => {
       title: "Scheduled Delivery",
       description: "Plan ahead and schedule your fuel delivery for a convenient time",
       features: ["Choose date & time", "Recurring deliveries", "Advance booking", "Up to 5L capacity"],
-      price: "Starting at ₹100 + fuel cost",
+      price: "Fuel cost + delivery charges",
       popular: false
     },
     {
@@ -29,7 +29,7 @@ const Services = () => {
       title: "Subscription Plans",
       description: "Regular fuel deliveries with exclusive benefits and discounts",
       features: ["Monthly/Weekly plans", "10% discount on fuel", "Priority support", "Free delivery"],
-      price: "Plans starting at ₹999/month",
+      price: "Plan starting at ₹599/year",
       popular: false
     }
   ];
@@ -63,28 +63,34 @@ const Services = () => {
 
   const deliveryOptions = [
     {
-      quantity: "1 Liter",
+      quantity: "1 Litre",
       container: "Sealed Can",
       useCase: "Emergency top-up",
-      price: "₹150 + fuel"
+      price: "Current market rate"
     },
     {
-      quantity: "2 Liters", 
+      quantity: "2 Litres", 
       container: "Sealed Can",
       useCase: "Short distance travel",
-      price: "₹130 + fuel"
+      price: "Current market rate"
     },
     {
-      quantity: "3 Liters",
+      quantity: "3 Litres",
       container: "Sealed Can", 
       useCase: "Daily commute",
-      price: "₹120 + fuel"
+      price: "Current market rate"
     },
     {
-      quantity: "5 Liters",
+      quantity: "4 Litres",
+      container: "Certified Container",
+      useCase: "Extended travel",
+      price: "Current market rate"
+    },
+    {
+      quantity: "5 Litres",
       container: "Certified Container",
       useCase: "Long distance/Weekend",
-      price: "₹100 + fuel"
+      price: "Current market rate"
     }
   ];
 

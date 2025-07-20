@@ -22,11 +22,11 @@ const FAQs = () => {
         },
         {
           question: "Do you charge extra for delivery?",
-          answer: "Our delivery fees are transparent and competitive. Charges range from ₹100-150 depending on quantity, with no hidden fees or surge pricing. We often run promotions offering free delivery for larger quantities or subscription plans."
+          answer: "Our delivery fees are transparent and competitive. Charges range from ₹60-100 depending on quantity, with no hidden fees or surge pricing. We often run promotions offering free delivery for larger quantities or subscription plans."
         },
         {
           question: "What areas do you currently serve?",
-          answer: "We currently serve the entire Hyderabad metropolitan area including Secunderabad, Cyberabad (Gachibowli, Madhapur, HITEC City), and surrounding suburbs. We're rapidly expanding to Bangalore, Chennai, and Pune in the coming months."
+          answer: "We currently serve Visakhapatnam and we will expand to all Tier 2 cities. We're rapidly expanding to Bangalore, Chennai, and Pune in the coming months."
         }
       ]
     },
