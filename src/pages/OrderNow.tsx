@@ -139,13 +139,12 @@ const OrderNow = () => {
   };
 
   const fuelTypes = [
-    { value: 'premium-petrol', label: 'Premium Petrol (91-95 Octane)', price: '₹105/L' },
-    { value: 'regular-petrol', label: 'Regular Petrol (87-91 Octane)', price: '₹98/L' },
+    { value: 'premium-petrol', label: 'Premium Petrol (95+ Octane)', price: '₹105/L' },
+    { value: 'regular-petrol', label: 'Regular Petrol (91-94 Octane)', price: '₹98/L' },
     { value: 'diesel', label: 'Diesel (High Cetane)', price: '₹89/L' }
   ];
 
   const quantities = [
-    { value: '0.5', label: '0.5 Liter', deliveryFee: '₹60' },
     { value: '1', label: '1 Liter', deliveryFee: '₹60' },
     { value: '2', label: '2 Liters', deliveryFee: '₹60' },
     { value: '3', label: '3 Liters', deliveryFee: '₹60' },
@@ -334,7 +333,7 @@ const OrderNow = () => {
                     <Label htmlFor="quantity">Quantity *</Label>
                     <Select value={formData.quantity} onValueChange={(value) => handleInputChange('quantity', value)}>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select quantity (0.5L-5L available)" />
+                        <SelectValue placeholder="Select quantity (1L-5L available)" />
                       </SelectTrigger>
                       <SelectContent>
                         {quantities.map((qty) => (
@@ -398,7 +397,8 @@ const OrderNow = () => {
                         className="bg-refuel-blue hover:bg-refuel-blue/90 text-white"
                         size="sm"
                       >
-                        Detect Location
+                        <Map className="h-4 w-4 mr-2" />
+                        Live Location
                       </Button>
                     </div>
                     <Textarea
@@ -508,7 +508,7 @@ const OrderNow = () => {
                 <div className="mt-6 pt-6 border-t">
                   <h4 className="font-semibold mb-3">Fuel Quality Assurance:</h4>
                   <p className="text-sm text-gray-600 leading-relaxed">
-                    We partner with certified fuel providers such as Indian Oil, HP, and Bharat Petroleum to ensure premium fuel quality. Our delivery partners carry sealed containers, and each order includes a quality certificate. We also provide a real-time density meter check at your doorstep. Not satisfied? We offer a 100% replacement guarantee.
+                    We partner with certified fuel providers such as Indian Oil, HP, and Bharat Petroleum to ensure premium fuel quality. Our delivery partners carry sealed containers, and each order includes a quality certificate. We also provide a real-time density meter check at your doorstep.
                   </p>
                 </div>
               </CardContent>

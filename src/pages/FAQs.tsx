@@ -66,7 +66,7 @@ const FAQs = () => {
         },
         {
           question: "Is there a cancellation policy?",
-          answer: "You can cancel your order free of charge up to 5 minutes after placing it. If our delivery partner has already been dispatched, a small cancellation fee of ₹50 applies. Emergency orders cannot be cancelled once a partner is assigned to ensure fair compensation."
+          answer: "You can cancel your order free of charge within 60 seconds after placing it. If you cancel between 60 seconds to 180 seconds, a small cancellation fee of ₹50 will be applied. Emergency orders cannot be cancelled once a partner is assigned to ensure fair compensation."
         }
       ]
     },
