@@ -145,6 +145,7 @@ const OrderNow = () => {
   ];
 
   const quantities = [
+    { value: '0.5', label: '0.5 Liter', deliveryFee: '₹60' },
     { value: '1', label: '1 Liter', deliveryFee: '₹60' },
     { value: '2', label: '2 Liters', deliveryFee: '₹60' },
     { value: '3', label: '3 Liters', deliveryFee: '₹60' },
@@ -333,7 +334,7 @@ const OrderNow = () => {
                     <Label htmlFor="quantity">Quantity *</Label>
                     <Select value={formData.quantity} onValueChange={(value) => handleInputChange('quantity', value)}>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select quantity (1L-5L available)" />
+                        <SelectValue placeholder="Select quantity (0.5L-5L available)" />
                       </SelectTrigger>
                       <SelectContent>
                         {quantities.map((qty) => (
@@ -503,27 +504,12 @@ const OrderNow = () => {
                   </p>
                 )}
 
-                {/* Service Features */}
+                {/* Fuel Quality Assurance */}
                 <div className="mt-6 pt-6 border-t">
-                  <h4 className="font-semibold mb-3">What's Included:</h4>
-                  <ul className="space-y-2 text-sm text-gray-600">
-                    <li className="flex items-center hover-scale transition-all duration-300">
-                      <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-                      Quality certified fuel with certificate
-                    </li>
-                    <li className="flex items-center hover-scale transition-all duration-300">
-                      <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-                      Real-time GPS tracking
-                    </li>
-                    <li className="flex items-center hover-scale transition-all duration-300">
-                      <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-                      Professional delivery in Visakhapatnam
-                    </li>
-                    <li className="flex items-center hover-scale transition-all duration-300">
-                      <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-                      Density meter quality verification
-                    </li>
-                  </ul>
+                  <h4 className="font-semibold mb-3">Fuel Quality Assurance:</h4>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    We partner with certified fuel providers such as Indian Oil, HP, and Bharat Petroleum to ensure premium fuel quality. Our delivery partners carry sealed containers, and each order includes a quality certificate. We also provide a real-time density meter check at your doorstep. Not satisfied? We offer a 100% replacement guarantee.
+                  </p>
                 </div>
               </CardContent>
             </Card>
